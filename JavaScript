@@ -1,0 +1,153 @@
+/*******CSS*******/
+问题：无法取有小数的px
+解决方案：computer认为1px是能显示的最小单位，因此，它会把小数抹去。
+
+问题：无法改变元素的位置
+解决方案：加上‘px’
+
+问题：offsetWidth无法获取外部样式表上的属性
+解决方案：currentStyle （IE）
+         getComputedStyle（FF，ch）
+getComputedStyle(obj,false)['width']  返回字符串
+
+问题：为什么ul无法装下左右图片
+代码：oPic_Ul.style.width=(aList_Small.length)*(aList_Small[0].offsetWidth)+'px';
+解决方案：因为每张图片可能有margin或者padding;
+解决代码：oPic_Ul.style.width=(aList_Small.length)*(aList_Small[0].offsetWidth+extraValue)+'px';
+
+/*******数值*******/
+Math.ceil(a)   取不小于a的最小整数
+Math.floor(a)  取不大于a的最大整数
+问题：在JavaScript中存在取值问题，例如0.07*100=0.70000...0001;
+解决方法：Math.round()  四舍五入取整，但是Math.round(-2.50)=-2 Math.round(-2.51)=-3
+/*******数组*******/
+pop、push：对数组的最后一个进行操作
+shift、unshift：对数组的第一个进行操作
+splice(a,b,...):从数组的第a个位置开始，删除b个数,然后再插入...
+arr1.concat(arr2):连接arr1,arr2
+arr.reverse()将数组颠倒
+arr.indexOf（n）返回数组中第一个n的位置，若没有则返回-1.
+/*******表格*******/
+tbodies=tbody
+rows=tr
+cells=td
+问题：无法对表格进行操作
+解决方案：加上tbodies[0]
+
+/*******运动*******/
+准则：
+1.在多物体运动框架下，最好避免使用公用变量，用类的方法
+2.
+
+运动原理：
+先根据目标值与当前值的大小确定速度的正负
+然后根据目标值是否与当前值相等确定相应操作
+
+
+问题：如果多按运动按钮，物体移动会变快
+原因：因为按一次按钮意味着设立一个定时器，所以速度是叠加起来的
+解决方案：每次在创建定时器前clear一下
+
+问题：物体在未达到目的地之前，启动onmouseout事件,物体并不会执行事件中的函数功能
+解决方案：可以为每一个物体设置自己的定时器
+代码：obj.timer=setInterval(func(){},30);
+
+问题：当物体加边框时，用offsetWidth会产生bug
+代码：oDiv.timer=setInterval(function(){
+	oDiv.style.width=oDiv.offsetWidth-1+'px';
+},30);
+
+解决方案：offsetWidth/offsetLeft取的是物体的盒模型，包含padding和margin
+
+问题：到达目的地后，点击运动按钮，物体仍然会运动
+代码：
+timer=setInterval(function(){
+  if (oDiv.offsetLeft==300){
+     clearInterval(timer);
+  }
+				
+  oDiv.style.left=oDiv.offsetLeft+10+'px';
+				
+},30);
+解决方案：
+timer=setInterval(function(){
+  if (oDiv.offsetLeft==300){
+	clearInterval(timer);
+  }
+  else{
+	oDiv.style.left=oDiv.offsetLeft+10+'px';
+  }
+},30);
+
+问题：如何简化运动代码？
+解决方案：对于功能相似的函数，可以总结为一个函数，尽可能地减少参数(修改speed的正负)
+
+问题：如何改变透明度？
+解决方案：透明度无法用offsetOpacity,因此需要设置一个变量，通过变量的变化来表示透明度的变化
+	 
+问题：在做轮播图自上而下展开的过程中，无法实现效果
+代码(css):position:absolute; left:0; top:0; width:400px; height:321px;
+解决方案：代码：position:absolute; left:0; top:0; width:400px; height:321px; overflow:hidden;
+原因：因为即便div的高度为0，如果不设置overflow属性，仍然可以显示原始大小的照片，因此如果要照片的大小动态变化，就必须设置overflow：hidden。
+
+问题:轮播图中，点击当前图片，仍然产生效果
+解决方案：设置一个变量now，如果now==this.index,就退出函数
+
+问题：在轮播图中，如何让当前图片在mouseout的时候，仍能高亮显示
+解决代码：aList_Small[i].onmouseout=function(){
+	if (this.index!=now){
+		startMove(this,'opacity',60);
+	}
+      };
+同时，必须保证，在该图片被点击时，其他图片必须透明
+代码：	for (var j=0;j<aList_Small.length;j++){
+	if ((aList_Small[j].index)==now){
+		startMove(aList_Small[j],'opacity',100);
+	}
+	else{
+	  startMove(aList_Small[j],'opacity',60);
+        }
+      }
+
+问题：鼠标悬停时，按钮无法由暗变亮
+解决方案：将按钮的z-index设置成较大的一个数
+
+问题：轮播图小图部分滚动时没有图片了怎么办？
+原因1：未设置ul的宽度
+解决方案：在JS里进行设置
+原因2：第一张和最后一张需要特殊设定
+代码：
+if (now==0){
+  startMove(oPic_Ul,'left',0);
+}
+else if (now==aList_Small.length-1){
+  startMove(oPic_Ul,'left',-(now-2)*(aList_Small[0].offsetWidth+10));
+}
+else{
+  startMove(oPic_Ul,'left',-(now-1)*(aList_Small[0].offsetWidth+10));
+}
+
+问题：如何进行自动播放？
+解决方案：自动执行按钮点击函数
+/*******对象*******/
+问题：浏览器报错
+代码：display({
+			name:'calm';
+			age:20;
+		});
+解决问题：对象属性之间不能加分号，应该加逗号。
+
+/*******事件*******/
+问题：无法用循环来完成对应的事件
+代码：for (var i=0;i<aList_Big.length;i++){
+	aList_Small[i].onclick=function(){
+		aList_Big[i].style.zIndex=nowIndex++;
+	};
+     }
+解决方案：因为功能都是函数完全加载完后才开始的，所以此时的i和i并不对应
+代码：for (var i=0;i<aList_Big.length;i++){
+	aList_Small[i].index=i;
+	aList_Small[i].onclick=function(){
+		aList_Big[this.index].style.zIndex=nowIndex++;
+	};
+     }

@@ -1,0 +1,99 @@
+/*******Git Notes*******/
+使用git的好习惯：
+1.master分支是特别稳定的，也就是仅用来发布新版本，平时不能在上面干活
+2.修改文件都在dev分支上
+安装完成后，需要设置用户名：
+git config --global user.name "username"
+git config --global user.email "email address"
+可以
+step1：创建版本库(repository),版本库里面的所有文件都可以被Git管理起来
+
+  进入文件夹----->git init （初始化版本库）----->目录下多了.git文件，可用ls -ah查看
+
+       创建远程仓库:
+
+       $ ssh-keygen -t rsa -C "youremail@example.com"
+       可以在主文件夹查看.ssh id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+
+
+step2：添加文件
+第一步：git add filename
+第二步：git commit -m filename
+
+step3:修改文件
+查看仓库当前状态：git status
+查看文件修改内容: git diff filename
+
+step4：版本回退
+查看提交日志: git log (每一个文件都有一个自动生成的16进制commit id)
+回到上一版本：git reset --hard HEAD^
+回到任意版本：git reset --hard commit id(至少前四位)
+
+
+/**********************************************/
+原理：
+
+     ------->工作区（working directory）
+Git 
+     ------->版本库------>stage暂存区（git add 命令实际上是将文件放到暂存区）
+                  ------>master分支(git commit 命令实际上是暂存区的文件提交到分支)
+
+一旦提交后，对文件未进行修改，工作区就是‘clean’的
+
+注意：git commit的只是暂存区(stage)里的文件，如果在提交前修改了工作区的文件，修改的地方是不会被提交上去的
+
+
+step5:撤销修改  git checkout -- filename 将工作区的文件恢复到最近一次git commit或git add时的状态。
+               git reset HEAD filename 撤销已经放入暂存区的修改
+
+step6:撤销删除  git checkout -- filename 可以把已经删除的文件恢复，但是无法恢复最新修改的内容
+               git rm filename 删除文件
+
+step7：上传文件至github
+第一步：在github上创建一个新的repository
+
+第二步:$ git remote add origin git@github.com:username/RepositoryName.git
+远程库的名字就是origin(官方默认)
+
+第三步：$ git push -u origin master（把本地库的所有内容推送到远程库上）
+实际上是把当前分支master推送到远程。
+由于远程库是空的，第一次推送master分支时，加上-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
+
+第四步：从现在起，只要本地作了提交，就可以通过命令：$ git push origin master
+
+step8：克隆仓库
+  $ git clone git@github.com:username/RepositoryName.git
+
+/***********************************/
+关于ssh的设置
+只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。
+
+step9：修改远程库的内容（多人协作）
+查看远程库内容：git remote -v
+
+
+step10:创建与合并分支
+/*******原理*******/
+master和head都是指针
+master指向master分支上最新的commit
+head指向当前分支
+创建新的分支dev后，master指针并不发生移动，如果要合并分支，只需要将master指向dev即可
+
+第一步：创建分支并切换分支：
+创建分支：$ git branch dev
+合并分支：$ git checkout dev
+创建并合并分支：$ git checkout -b dev
+查看当前分支：$ git branch
+
+第二步：切换回master分支
+$ git checkout master
+
+第三步：合并分支
+$ git merge dev将当前分支与dev分支合并 用的是fast forward模式
+加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
+
+第四步：删除分支
+$ git branch -d dev
+
+step11 分支冲突
+查看分支图：git log --graph

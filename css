@@ -1,0 +1,14 @@
+/*******透明度*******/
+IE：filter:alpha(opacity:50)
+非IE: opacity:0.5
+在JavaScript中,代码如下：
+if （attr==‘opacity’）{
+  obj.style.filter='alpha(opacity:'+value+')';
+  obj.style.opacity=value;
+}
+
+/*******清除浮动*******/
+.clearfix{zoom:1; }
+.clearfix:after{display:none; clear:both; content:""; height:0;}
+
+
