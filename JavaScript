@@ -15,6 +15,8 @@ getComputedStyle(obj,false)['width']  返回字符串
 解决方案：因为每张图片可能有margin或者padding;
 解决代码：oPic_Ul.style.width=(aList_Small.length)*(aList_Small[0].offsetWidth+extraValue)+'px';
 
+问题：变量名后面不能跟getElementById
+解决方法：只能用getElementsByTagName
 /*******数值*******/
 Math.ceil(a)   取不小于a的最小整数
 Math.floor(a)  取不大于a的最大整数
@@ -151,3 +153,29 @@ else{
 		aList_Big[this.index].style.zIndex=nowIndex++;
 	};
      }
+
+问题：无法给空的body加事件
+解决方案：body是页面元素的总和
+解决代码：改为document.onclick()=funtion(){};
+
+问题：如何确定鼠标坐标？
+解决方案：event.clientX、event.clientY(IE)
+function(ev){
+ev.clientX; //FF
+
+问题:无法做到点击其他位置，div消失
+代码：oBtn.onclick=function(){
+  	oDiv.style.display='block';
+  };
+  document.onclick=function(){
+  	oDiv.style.display='none';
+  };
+原因：事件流
+}
+解决方案：oBtn.onclick=function(){
+  	oDiv.style.display='block';
+	event.cancelBubble=true;
+  };
+  document.onclick=function(){
+  	oDiv.style.display='none';
+  };
