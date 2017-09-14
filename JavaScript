@@ -179,3 +179,11 @@ ev.clientX; //FF
   document.onclick=function(){
   	oDiv.style.display='none';
   };
+
+问题：如何让物体跟着鼠标走？
+解决方案：scrollTop+clientY(clientY只局限于可视区，)
+代码：var oEvent=ev||event;
+var scroll=document.body.scrollTop||document.documentElement.scrollTop;（chrome下用的是body，IE和FF下用的是html）
+oDiv.style.left=oEvent.clientX+'px';
+oDiv.style.top=oEvent.clientY+scroll+'px';
+
