@@ -11,4 +11,6 @@ if （attr==‘opacity’）{
 .clearfix{zoom:1; }
 .clearfix:after{display:none; clear:both; content:""; height:0;}
 
-
+/*******表单*******/
+问题：如何显示默认值？
+解决方案：placehold

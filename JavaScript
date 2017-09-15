@@ -187,3 +187,8 @@ var scroll=document.body.scrollTop||document.documentElement.scrollTop;（chrome
 oDiv.style.left=oEvent.clientX+'px';
 oDiv.style.top=oEvent.clientY+scroll+'px';
 
+问题：如何用ctrl+Enter提交内容
+解决方案event.ctrlKey==1即可实现
+
+
+
