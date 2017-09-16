@@ -162,6 +162,10 @@ else{
 解决方案：event.clientX、event.clientY(IE)
 function(ev){
 ev.clientX; //FF
+代码：function(ev){
+  var oEvent=ev||event;
+  alert(oEvent.clientX);
+}
 
 问题:无法做到点击其他位置，div消失
 代码：oBtn.onclick=function(){
@@ -189,6 +193,17 @@ oDiv.style.top=oEvent.clientY+scroll+'px';
 
 问题：如何用ctrl+Enter提交内容
 解决方案event.ctrlKey==1即可实现
+
+问题：拖拽物体的时候，鼠标加快速度容易脱离物体
+解决方案：将事件对象改为document
+
+问题：在拖拽图片的时候，产生图片移动的幻影怎么办
+解决方案：在onmousedown的最后加上return false;
+
+问题：如何查看当前窗口的大小
+解决方案：document.documentElement.clientWidth
+document.documentElement.clientHeight
+
 
 
 
