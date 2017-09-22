@@ -250,7 +250,54 @@ new:偷偷帮你做了两件事：
 1.用混合的方式构造对象
 构造函数+原型
 2.原则
-构造函数：加属性
-原型：加方法
+一.函数不能发生嵌套
+二.onload变构造函数，对象变属性，函数变方法
+二.构造函数：加属性
+三.原型：加方法
 
+
+
+问题：继承的实现
+解决方案：属性的继承用call
+	原型的继承用for (in)
+
+问题：当调用事件的时候，this的指向会发生变化，该如何解决
+解决方案：自定义一个_this变量保存当前的this
+
+问题：由方法改造的原型中如果由return 怎么办？
+解决方案：将原来的return放到调用这个方法的函数中去
+
+/*******JSON*******/
+
+简介：整个程序只有一个
+
+/*******BOM*******/
+问题：如何新建窗口？
+解决方案：window.open(URL,方法)
+方法：_self,表示不新建窗口
+      _blank,新建窗口
+
+问题：window.doucment.write的用法？
+解决方案：用于向文档写入代码	
+
+问题：如何解决ff和ie中windoe.close出错
+解决方案：设计两个页面，Open页面写关闭页面的URL，
+
+问题：如何获取用户浏览器的信息？
+解决方案：window.navigator.userAgent
+
+问题：如何获取当前页面的地址？
+解决方案：window.location
+
+问题：如何获取可视区的大小
+解决方案：document.documentElement.clientHeight/clientWidth
+
+问题：如何做到滚动时，物体相对静止
+解决方案：
+window.onscroll=function(){
+oDiv.style.top=document.documentElement.scrollTop+document.documentElement.clientHeight-oDiv.offsetHeight+'px';
+};
+
+问题：当浏览器大小变化时，物体的定位功能失败
+解决方案：加上window.onresize方法
 
