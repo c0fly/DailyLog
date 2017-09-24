@@ -22,6 +22,7 @@ Math.ceil(a)   取不小于a的最小整数
 Math.floor(a)  取不大于a的最大整数
 问题：在JavaScript中存在取值问题，例如0.07*100=0.70000...0001;
 解决方法：Math.round()  四舍五入取整，但是Math.round(-2.50)=-2 Math.round(-2.51)=-3
+
 /*******数组*******/
 pop、push：对数组的最后一个进行操作
 shift、unshift：对数组的第一个进行操作
@@ -29,6 +30,7 @@ splice(a,b,...):从数组的第a个位置开始，删除b个数,然后再插入.
 arr1.concat(arr2):连接arr1,arr2
 arr.reverse()将数组颠倒
 arr.indexOf（n）返回数组中第一个n的位置，若没有则返回-1.
+
 /*******表格*******/
 tbodies=tbody
 rows=tr
@@ -36,6 +38,10 @@ cells=td
 问题：无法对表格进行操作
 解决方案：加上tbodies[0]
 
+
+/*******表单*******/
+问题:如何判断checkbox被选了?
+解决方案:items[i].checked方法
 /*******运动*******/
 准则：
 1.在多物体运动框架下，最好避免使用公用变量，用类的方法
@@ -300,4 +306,21 @@ oDiv.style.top=document.documentElement.scrollTop+document.documentElement.clien
 
 问题：当浏览器大小变化时，物体的定位功能失败
 解决方案：加上window.onresize方法
+
+/*******Date*******/
+问题：如何设定日期？
+解决方案：oDate.setDate()
+
+问题:为什么getTime()得到一大串数字？
+解决方案：getTime计算的是从 1970/01/01 到现在的毫秒数
+
+/*******Cookie*******/
+问题：如何设置cookie 的有效期？
+解决方案：expires=oDate.setDate(oDate.getDate()+14);
+
+
+
+
+
+
 
