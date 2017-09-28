@@ -52,6 +52,8 @@ $('E2').replaceAll('E1')   用E2去换E1;
 				$('E1').wrapAll('E2') 将所有E1元素看成一个整体,在这个整体外包裹一个元素
 				$('E1').wrapInner('E2') 在每个E1元素内部包裹一个元素
 
+问题:如何获取某个元素内部的元素?
+解决方案:html(); 与JavaScript中的innerHTML类似
 /*******设置样式*******/
 问题:如何设置属性?
 解决方案:$('E1').attr('attr','new attr');
@@ -68,6 +70,15 @@ $('E2').replaceAll('E1')   用E2去换E1;
 解决方案:E1.removeClass('class1'); 仅删除一个
 				E1.removeClass('class1 class2'); 同时删除两个
 				E1.removeClass(); 删除全部
+
+问题:如何切换样式?
+解决方案:toggleClass('className'),如果className存在,就删除它,否则,就加上它
+
+问题:如何判断是否有该样式?
+解决方案:hasClass();是,就返回true
+
+/*******事件*******/
+
 
 
 

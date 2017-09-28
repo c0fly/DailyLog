@@ -2,6 +2,11 @@
 问题:为什么element.getArrribute('src')可以简写成element.src?
 解决方案:DOM分为HTML-DOM,DOM-core和CSS-DOM
 不同的写法虽然作用相似,但是属于不同的DOM
+
+问题:onclick函数报错
+解决方案:可能是在head里面加了script
+加上window.onload
+
 /*******CSS*******/
 问题：无法取有小数的px
 解决方案：computer认为1px是能显示的最小单位，因此，它会把小数抹去。
