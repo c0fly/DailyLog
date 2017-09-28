@@ -1,3 +1,7 @@
+/*******DOM*******/
+问题:为什么element.getArrribute('src')可以简写成element.src?
+解决方案:DOM分为HTML-DOM,DOM-core和CSS-DOM
+不同的写法虽然作用相似,但是属于不同的DOM
 /*******CSS*******/
 问题：无法取有小数的px
 解决方案：computer认为1px是能显示的最小单位，因此，它会把小数抹去。
@@ -318,8 +322,13 @@ oDiv.style.top=document.documentElement.scrollTop+document.documentElement.clien
 问题：如何设置cookie 的有效期？
 解决方案：expires=oDate.setDate(oDate.getDate()+14);
 
-
-
+/*******函数*******/
+问题:如何直接执行函数?
+解决方案: (function(i){
+    item.onclick = function(ev) {
+      console.log('Item ' + i + ' is clicked.');
+    };
+  })(i);
 
 
 
