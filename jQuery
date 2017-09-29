@@ -78,7 +78,10 @@ $('E2').replaceAll('E1')   用E2去换E1;
 解决方案:hasClass();是,就返回true
 
 /*******事件*******/
+问题:如何知道元素获得焦点,和失去焦点
+解决方案:focus(),blur()相当于JS中的onfocus和onblur
 
-
-
+/*******表单*******/
+问题:如何获取表单的默认值?
+解决方案:defaultValue
 
