@@ -54,6 +54,13 @@ $('E2').replaceAll('E1')   用E2去换E1;
 
 问题:如何获取某个元素内部的元素?
 解决方案:html(); 与JavaScript中的innerHTML类似
+
+问题:如何查找节点?
+解决方案:
+next()下一个兄弟节点
+prev()上一个兄弟节点
+children()子节点(中的某一个)
+sibling()所有兄弟节点(中的某一个)
 /*******设置样式*******/
 问题:如何设置属性?
 解决方案:$('E1').attr('attr','new attr');
@@ -81,7 +88,29 @@ $('E2').replaceAll('E1')   用E2去换E1;
 问题:如何知道元素获得焦点,和失去焦点
 解决方案:focus(),blur()相当于JS中的onfocus和onblur
 
+问题:$(document).ready()和window.onload的区别?
+解决方案:$(document).ready()是只要DOM就绪就执行代码
+				window.onload是等网页元素全部加载完毕再执行代码
+				window.onload上只能保存一个函数
+				而$(document).ready()可以保存多个函数
+				$(window).load和window.onload相似
+
+问题:如何进行事件绑定?
+解决方案:bind(事件,函数)
+
+问题:jquery中的事件合成方法?
+解决方案:hover(func1(enter),func2(leave));
+
+问题:如何取消事件冒泡?
+解决方案:click(function(event){
+	event.stopPropagation();
+})
 /*******表单*******/
 问题:如何获取表单的默认值?
 解决方案:defaultValue
+
+/*******BOM*******/
+问题:如何获取鼠标位置?
+解决方案:e.pageX和e.pageY
+
 

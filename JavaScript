@@ -270,7 +270,8 @@ new:偷偷帮你做了两件事：
 二.构造函数：加属性
 三.原型：加方法
 
-
+问题:如何判断变量的构造函数
+解决方案:constructor()
 
 问题：继承的实现
 解决方案：属性的继承用call
@@ -335,6 +336,10 @@ oDiv.style.top=document.documentElement.scrollTop+document.documentElement.clien
     };
   })(i);
 
-
-
+/*******引号*******/
+问题:单双引号的应用
+解决方案:如果要在引号内使用变量,那么就要用不同的引号
+代码: "My name is "+name+""
+如果只是显示引号的内容,就用不同的引号
+代码: "My name is 'Tom'";
 
