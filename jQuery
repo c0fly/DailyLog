@@ -16,9 +16,9 @@
 				name:even 表示偶数
 
 问题:如何选择前几个元素或者后几个元素或者第几个元素?
-解决方案:gt(5) 第五个元素之后的元素
-				lt(5) 第五个元素之前的元素
-				eq(5) 第五个元素
+解决方案::gt(5) 第五个元素之后的元素
+				:lt(5) 第五个元素之前的元素
+				:eq(5) 第五个元素
 问题:如何在一群元素中,删去若干元素
 解决方案:  :not()
 
@@ -88,6 +88,9 @@ sibling()所有兄弟节点(中的某一个)
 问题:如何知道元素获得焦点,和失去焦点
 解决方案:focus(),blur()相当于JS中的onfocus和onblur
 
+问题:滚动条移动事件?
+解决方案:$(window).scroll()
+
 问题:$(document).ready()和window.onload的区别?
 解决方案:$(document).ready()是只要DOM就绪就执行代码
 				window.onload是等网页元素全部加载完毕再执行代码
@@ -97,6 +100,19 @@ sibling()所有兄弟节点(中的某一个)
 
 问题:如何进行事件绑定?
 解决方案:bind(事件,函数)
+一个bind()可以同时绑定多个事件类型
+还可以为bind()中的事件加上类名,如果需要unbind(),直接输入类名即可
+代码示例:
+$('#btn').bind('mouseover.eve',function(){
+				console.log('over');
+			}).bind('click.eve',function(){
+				console.log('click');
+			}).bind('mousedown',function(){
+				console.log('down');
+			});
+			$('#btn2').bind('click',function(){
+				$('#btn').unbind('.eve');
+			});
 
 问题:jquery中的事件合成方法?
 解决方案:hover(func1(enter),func2(leave));
@@ -105,6 +121,41 @@ sibling()所有兄弟节点(中的某一个)
 解决方案:click(function(event){
 	event.stopPropagation();
 })
+
+问题:如何查看事件的类型?
+解决方案:event.type();同JS
+
+问题:如何获取事件对象的属性?
+解决方案:event.target.property
+
+问题:如何获取鼠标和键盘的值?
+解决方案:event.which()
+
+问题:如何取消事件?
+解决方案:unbind(事件类型,函数)
+
+问题:jquery可否执行自定义事件?
+解决方案:trigger()方法
+代码实例:
+$('#btn').bind("myClick", function(){
+	$('#test').append("<p>我的自定义事件.</p>");
+});
+$('#btn').click(function(){
+	$(this).trigger("myClick");
+}).trigger("myClick");
+
+trigger()的用法: 
+trigger(type,[data])
+代码实例:
+	$('#btn').bind('myClick',function(event,txt1,txt2){
+		$('body').append('<p>'+txt1+','+txt2+'</p>');
+	});
+	$('#btn').click(function(){
+		$(this).trigger('myClick',["Hello","World"]);
+	});
+triggerHandler(type):用于取消浏览器默认行为	
+
+
 /*******表单*******/
 问题:如何获取表单的默认值?
 解决方案:defaultValue
@@ -113,4 +164,62 @@ sibling()所有兄弟节点(中的某一个)
 问题:如何获取鼠标位置?
 解决方案:e.pageX和e.pageY
 
+/*******动画*******/
+问题:hide()用法;
+解决方案:可以在hide()内部加上数字,表示消失的快慢
+hide()在生效前,会先保存元素原来的状态
 
+问题:对元素透明度的操作?
+解决方案:fadeIn:增加透明度
+				fadeOut:减少透明度
+
+问题:元素的收缩和展开?
+解决方案:slideUp是收缩,元素高度减少,同时display变成none;
+				slideDown是展开,元素高度增加				
+
+问题:如何让动画移动?
+解决方案:animate({left:"500px"},1000);
+				animate({left:"+=500px"},1000)可以让元素持续移动
+注意这里引号的位置
+
+问题:动画和一些操作不能按照顺序执行?
+例如:$('#btn').click(function(){
+				$('div').hide();
+				alert('div has been hidden');
+			});
+解决方案:一些操作并不属于动画队列,所以会提前执行;
+可以使用回调函数(callback)
+代码示例:
+$('#btn').click(function(){
+	$('div').hide(1000,function(){
+		alert('Div has been hidden');
+	});
+});
+
+问题:如果反复按动画按钮,会产生动画混乱
+解决方案:使用stop(),来清理动画队列
+stop()中有两个参数
+1.stopAll	停止加入队列的所有动画
+2.gotoEnd 是否允许完成当前动画 
+在实际开发中, 用得最多的就是stop(true, true),首先清楚动画队列,然后让当前的动画立即完成,很少有单纯的使用stop()的
+
+问题:判断是否处于动画状态
+解决方案:is(':animated')
+
+问题:jQuery中的定时功能?
+解决方案:setInterval(),同理,需要clearInterval()
+
+/*******BOM*******/
+问题:如何获取scroll
+解决方案:$(doucment).scrollTop();
+
+问题:如何获取浏览器尺寸?
+解决方案:
+alert($(window).height()); //浏览器时下窗口可视区域高度   
+alert($(document).height()); //浏览器时下窗口文档的高度   
+alert($(document.body).height());//浏览器时下窗口文档body的高度   
+alert($(document.body).outerHeight(true));//浏览器时下窗口文档body的总高度 包括border padding margin   
+alert($(window).width()); //浏览器时下窗口可视区域宽度   
+alert($(document).width());//浏览器时下窗口文档对于象宽度   
+alert($(document.body).width());//浏览器时下窗口文档body的高度   
+alert($(document.body).outerWidth(true));//浏览器时下窗口文档body的总宽度 包括border padding margin   
