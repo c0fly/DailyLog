@@ -7,6 +7,8 @@
 解决方案:可能是在head里面加了script
 加上window.onload
 
+问题:append和appendChild()的区别
+
 /*******CSS*******/
 问题：无法取有小数的px
 

@@ -36,6 +36,9 @@
 解决方案:创建节点:$('html代码')
 插入节点:$(父节点).append(节点1,节点2,...)
 
+问题:appendTo的作用?
+解决方案:将节点从一个元素移到另一个元素
+
 问题:如何删除指定的元素?
 解决方案:$('元素').remove('元素[条件]')
 
@@ -223,3 +226,14 @@ alert($(window).width()); //浏览器时下窗口可视区域宽度
 alert($(document).width());//浏览器时下窗口文档对于象宽度   
 alert($(document.body).width());//浏览器时下窗口文档body的高度   
 alert($(document.body).outerWidth(true));//浏览器时下窗口文档body的总宽度 包括border padding margin   
+
+/*******表单*******/
+问题:如何把全选和全不选合并成一个框?
+解决方案:attr('checked',this.checked)
+
+问题:this和$(this)的区别?
+解决方案:如果你要使用html元素本身的属性或方法就需要使用this,如果你要使用jQuery包装后的方法或属性就要$(this)
+一般则有如下的关系$(this)[0] == this;
+
+问题:三目表达式的缩写(?:)?
+解决方案:$(this)[flag?"removeClass":"addClass"]('selected')
