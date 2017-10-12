@@ -1,6 +1,26 @@
 /**********module**********/
-
+在给文件命名时,不要将名字设置成和模块名相同,会造成错误.(比如:turtle.py)
 /*******os*******/
 获取文档列表名称:os.listdir(Path)
 获取当前工作目录:os.getcwd()
 更改当前工作目录:os.chdir() /*在对文件进行操作时,需要注意工作目录*/
+
+/*******turtle*******/
+改变形状:turtle.shape()
+改变颜色:turtle.color(画笔颜色,轨迹颜色)
+改变速度:turtle.speed()
+
+/****turtle的类****/
+1.Screen():用来控制屏幕
+2.Turle():用来控制画笔
+	circle(radius,angle,steps)
+
+
+
+
+/**********other usage**********/
+/*******range*******/
+常用于循环,range(开始,结束,步长)
+
+
+
