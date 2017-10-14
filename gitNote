@@ -53,7 +53,7 @@ step6:撤销删除  git checkout -- filename 可以把已经删除的文件恢�
 step7：上传文件至github
 第一步：在github上创建一个新的repository
 
-第二步:$ git remote add origin git@github.com:username/RepositoryName.git
+第二步:$git remote rm origin $ git remote add origin git@github.com:username/RepositoryName.git
 远程库的名字就是origin(官方默认)
 
 第三步：$ git push -u origin master（把本地库的所有内容推送到远程库上）
