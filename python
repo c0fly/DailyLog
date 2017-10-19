@@ -10,7 +10,7 @@
 改变颜色:turtle.color(画笔颜色,轨迹颜色)
 改变速度:turtle.speed()
 
-/****turtle的类****/
+/&&&turtle的类&&&/
 1.Screen():用来控制屏幕
 2.Turle():用来控制画笔
 	circle(radius,angle,steps)
@@ -22,5 +22,80 @@
 /*******range*******/
 常用于循环,range(开始,结束,步长)
 
+/*******open*******/
+地址位于内置函数(build-in-function)中,用来打开文件
 
+/*******字符*******/
+1.str()将其他类型的数字转成字符
+2.大小写:lower(),upper()
 
+/*******运算*******/
+1.除法运算的时候,注意浮点数的选择(3/2=1)
+
+/*******数组(list)*******/
+1.插入:arr.insert()
+2.删除:del arr[0]/arr.remove(内容)
+3.弹出最后一个数:arr.pop()
+4.加入最后一个数:arr.append()
+5.求数组长度:len(arr)
+6.数组倒序a:arr.reverse() 
+7.显示特定元素:arr[n:m],不包含m  arr[-2:]最后两个元素
+8.元组:arr=(),元组内的元素不能被更改,但是可以重新定义整个元组
+
+/*******排序*******/
+1.永久性排序:sort(),从大到小顺序:sort(reverse=True)
+
+/*******判断*******/
+1.与运算是 and
+	或运算是 or
+	非运算是 not
+
+2.元素是否在数组中?
+... in ...
+... not in ...
+
+3.else if 在python里面是elif	
+
+/*******字典(对象)*******/
+1.最好先命名一个空字典,再对它进行操作
+2.删除字典中的元素: del dic["..."]
+3.dic.items()返回键-值表,可以用for key,value in dic.items()遍历
+4.dic.keys() 返回键
+5.dic.values()返回值
+
+/*******用户输入*******/
+1.raw_input():
+
+/*******函数*******/
+/***参数传递***/
+1.*的作用:在函数不知道传递多少实参的时候用
+一般这种参数放在最后
+例如:
+def func(*toppings):
+	for topping in toppings:
+		print(topping)
+
+func("a","b","c")
+func("d","e")		
+
+2.**的作用:在不知道函数传递什么实参的时候用
+一般用来表示字典
+例如:
+def func(**toppings):
+  dic={}
+  for key,value in toppings:
+  	dic[key]=value
+  return dic
+
+user=func((name="Tom",age=24))
+print(user)
+
+/***导入函数***/
+1.从模块中导入函数:
+from module_name import func_name
+2.简化模块函数:
+form module_name import func_name as simple_name
+3.简化模块:
+import module_name as mn
+4.导入模块中的所有函数:
+from module import *
