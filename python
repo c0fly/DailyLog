@@ -10,7 +10,7 @@
 改变颜色:turtle.color(画笔颜色,轨迹颜色)
 改变速度:turtle.speed()
 
-/&&&turtle的类&&&/
+/***turtle的类***/
 1.Screen():用来控制屏幕
 2.Turle():用来控制画笔
 	circle(radius,angle,steps)
@@ -99,3 +99,28 @@ form module_name import func_name as simple_name
 import module_name as mn
 4.导入模块中的所有函数:
 from module import *
+
+/*******类*******/
+1.问题:如何判断某个变量是某一种类型?
+解决方案:isinstance()
+a = list() # a是list类型
+b = Animal() # b是Animal类型
+c = Dog() # c是Dog类型
+isinstance(a, list)
+
+2.问题:如何保持和父类一样的方法?
+解决方案:super().__init__()
+super()是一个特殊函数,帮助父类和子类联系起来
+
+/*******字符编码*******/
+1.问题:源代码中有中文报错,怎么办?
+解决方案: 在第一行加上 # _*_coding:UTF _*_
+
+
+
+
+
+
+
+
+

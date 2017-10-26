@@ -21,3 +21,4 @@ if （attr==‘opacity’）{
 
 问题:如何调整背景的位置?
 解决方案:background-position:100% 80%,通过比例来确定大图的位置
+	background-attachment:fixxed,使背景不随scroll而移动
