@@ -1,0 +1,19 @@
+manage.py:  与项目进行交互的命令行工具集的接口
+wsgi.py:  python与服务器通信的接口
+settings.py:  用来进行web应用的相关设定
+urls.py:配置url(正则,对应方法,名称)
+
+/*******process*******/
+
+django-admin startproject 项目名:创建项目(项目名称不建议修改)
+
+项目名称同级目录下,输入django-admin stearapp 应用名 ,并且在settings.py的应用内添加自己的应用名
+应用目录:
+admin.py   该应用的后台管理系统配置
+models.py  数据模块(mvc?)
+tests.py   自动化测试
+views.py   执行响应的代码所在模块,代码逻辑处理的主要地点,项目中大部分代码都在此编写
+
+在view.py中写代码,并配置相应的URL(根据提示)
+
+.python manage.py runserver 打开服务器

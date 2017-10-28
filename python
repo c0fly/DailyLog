@@ -120,7 +120,6 @@ super()是一个特殊函数,帮助父类和子类联系起来
 
 
 
-
-
-
+/*******web开发*******/
+WSGI Web Server Gateway Interface 是一个http相关的底层代码的接口
 
