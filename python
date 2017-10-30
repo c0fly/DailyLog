@@ -1,5 +1,11 @@
 /**********module**********/
 在给文件命名时,不要将名字设置成和模块名相同,会造成错误.(比如:turtle.py)
+
+模块import:
+
+from . import XXX :表示退回到上一级目录,导入xxx
+from .A import XXX:表示进入上一级的A目录下面,调用A里面的xxx
+
 /*******os*******/
 获取文档列表名称:os.listdir(Path)
 获取当前工作目录:os.getcwd()

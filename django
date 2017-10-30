@@ -14,6 +14,52 @@ models.py  数据模块(mvc?)
 tests.py   自动化测试
 views.py   执行响应的代码所在模块,代码逻辑处理的主要地点,项目中大部分代码都在此编写
 
-在view.py中写代码,并配置相应的URL(根据提示)
+在view.py中写代码,并配置相应的URL(根据提示),有些时候,需要在应用下面配置url.py
+这时在应用下的url和项目下的url写的内容是不一样的
+
+如果要修改url,最好修改应用下的url,如果改成空字符,应该利用正则表达式'^$',注意这种写法要留意'/'
 
 .python manage.py runserver 打开服务器
+
+
+
+/*******template*******/
+模板由一系列html组成
+
+步骤:在应用目录下,创建一个名为Template的文件夹
+		在该目录下创建HTML文件
+		在views.py中返回render(),render格式:render(request,文件名,dict),在html文件中用{{}}表示键值即可
+
+/*****问题*****/
+1.在不同templates下的html文件名字相同,会发生覆盖现象,该如何解决?
+解决方案:在每个templates文件夹下新建一个文件夹以app名称命名,把html文件移动到那个文件夹下面
+
+
+
+/*******model*******/
+每个模型对应着单一的数据表,包含对数据的交互和数据的关键部分
+每个model都是一个model.Model下的子类
+model的每个属性都代表一个数据库字段
+/*****field*****/
+1.CharField:字符串字段,null=True,表示初始键值为空
+2.TextField:默认为Textarea
+
+
+在model.py中创建相应的类,然后进行数据迁移:
+python manage.py makemigrations app名
+python manage.py migrate
+会在migration中生成迁移文件
+查看sql语句:python manage.py sqlmigrate 应用名 文件id
+
+
+/*******admin*******/
+创建用户:python manage.py createsuperuser 创建超级用户
+问题:如果显示data base is locked,如何解决?
+解决方案:spllite是一个轻量级的数据库,不能多并发进行,因此需要确定是否关闭了spllite的其它应用
+
+
+
+
+
+
+
