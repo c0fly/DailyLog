@@ -3,7 +3,9 @@ wsgi.py:  python与服务器通信的接口
 settings.py:  用来进行web应用的相关设定
 urls.py:配置url(正则,对应方法,名称)
 
-/*******admin*******/
+*************************
+					admin
+*************************
 创建用户:python manage.py createsuperuser 创建超级用户
 
 导入应用:在admin.py中引入自身的models模块
@@ -13,8 +15,10 @@ urls.py:配置url(正则,对应方法,名称)
 
 显示自己的title:可以在Article下面添加一个__str__方法(py2.7 用__unicode__)
 
+*************************
+					model
+*************************
 
-/*******model*******/
 每个模型对应着单一的数据表,包含对数据的交互和数据的关键部分
 每个model都是一个model.Model下的子类
 model的每个属性都代表一个数据库字段
@@ -32,7 +36,9 @@ python manage.py migrate
 解决方案:重新进行数据迁移
 
 
-/*******process*******/
+*************************
+					process
+*************************
 
 django-admin startproject 项目名:创建项目(项目名称不建议修改)
 
@@ -51,7 +57,9 @@ views.py   执行响应的代码所在模块,代码逻辑处理的主要地点,�
 .python manage.py runserver 打开服务器
 
 
-/*******template*******/
+*************************
+			 templates
+*************************
 模板由一系列html组成
 
 步骤:在应用目录下,创建一个名为Template的文件夹
@@ -60,6 +68,9 @@ views.py   执行响应的代码所在模块,代码逻辑处理的主要地点,�
 
 在template中的HTML下面,url可以有如下形式:{%url 'app_name:url_name' param %} app_name和url_name都在url中配置根url,写在include()的第二个参数位置(name_space),应用下则写在url()的第三个参数位置(name)
 
+/*****过滤器*****/
+修改模板中的变量,从而显示bu
+
 
 /*****问题*****/
 1.在不同templates下的html文件名字相同,会发生覆盖现象,该如何解决?
@@ -67,8 +78,23 @@ views.py   执行响应的代码所在模块,代码逻辑处理的主要地点,�
 
 2.表单提交时,显示CSRF token missing or incorrect
 解决方案:在每个form里面加上{% csrf_token %}
-/******url*******/
 
+*************************
+				url
+*************************
+url()包含四个参数:regex,view,kwargs,name  前两个是必须的
+
+
+*****include*****
+1.在根url,除了admin.site.urls不需要URL,其余都需要用include
+
+
+*************************
+			 shell
+*************************
+python manage.py shell
+可以用来调试代码
+并且尝试未知方法
 
 
 
