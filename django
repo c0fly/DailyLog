@@ -32,6 +32,15 @@ python manage.py migrate
 会在migration中生成迁移文件
 查看sql语句:python manage.py sqlmigrate 应用名 文件id
 
+/*****获取对象*****/
+1.获取全部对象:Class.objects.all()
+2.获取指定对象:Class.objects.filter()
+						 Class.objects.exclude()
+						 Class.objects.all()[:5]表示前5个对象
+						 Class.objects.all()[2:5]表示第3到第5个对象
+						 Class.objects.order_by(attr)[:5]:根据attr排列前5个
+						 Class.objects.order_by(-attr)[:5]:根据attr排列后5个
+
 问题:在数据迁移后打开站点报错:django.db.utils.OperationalError: no such table
 解决方案:重新进行数据迁移
 
@@ -96,6 +105,10 @@ python manage.py shell
 可以用来调试代码
 并且尝试未知方法
 
+/*****models*****/
+创建数据:b=Blog(name='',tagline='')
+修改数据:b.name=''
+保存数据:b.save()
 
 
 
