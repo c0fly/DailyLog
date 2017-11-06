@@ -56,6 +56,11 @@ step7：上传文件至github
 第二步:$git remote rm origin $ git remote add origin git@github.com:username/RepositoryName.git
 远程库的名字就是origin(官方默认)
 
+问题:如何每次避免输入用户名和密码?
+解决方案:把http协议改为ssh协议即可
+git remote rm origin
+git remote add origin git@github.com:c0fly/DsAndAlgo
+
 第三步：$ git push -u origin master（把本地库的所有内容推送到远程库上）
 实际上是把当前分支master推送到远程。
 由于远程库是空的，第一次推送master分支时，加上-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
@@ -99,4 +104,9 @@ $ git branch -d dev
 step11 分支冲突
 查看分支图：git log --graph
 
+问题:在本地push的时候出现如下错误,如何解决?
+error: failed to push some refs to 'git@github.com:c0fly/DsAndAlgo'
 
+解决方案:因为github上的内容超前了,所以需要合并
+
+git pull --rebase origin master 
