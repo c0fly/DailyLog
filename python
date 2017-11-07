@@ -64,6 +64,9 @@ from .A import XXX:表示进入上一级的A目录下面,调用A里面的xxx
 
 /*******字典(对象)*******/
 1.最好先命名一个空字典,再对它进行操作
+创建字典:dict()  dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
+
+
 2.删除字典中的元素: del dic["..."]
 3.dic.items()返回键-值表,可以用for key,value in dic.items()遍历
 4.dic.keys() 返回键
